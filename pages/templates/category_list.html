@@ -1,0 +1,16 @@
+<!--{% extends 'base.html' %}-->
+<!--{% block title %}{{ post.cat_menu_list}}{% endblock %}-->
+
+
+{% block content %}
+
+<h2> Site Categories</h2>
+
+            {% for item in cat_menu_list %}
+              <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+            {% endfor %}
+
+
+
+
+{% endblock %}
