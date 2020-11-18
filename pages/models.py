@@ -16,14 +16,16 @@ class Category(models.Model):
         return reverse('home')
 
 
+
+
 class Post(models.Model):
     Site_name = models.ForeignKey(User, on_delete=models.CASCADE)
     Panel_name = models.CharField(max_length=255)
     Operator_name = models.CharField(max_length=255)
-    Bite_name = models.CharField(max_length=255)
-    Detail_name = models.CharField(max_length=255)
+    # Bite_name = models.CharField(max_length=255)
+    # Detail_name = models.CharField(max_length=255)
     Depth = models.CharField(max_length=255)
-    # post_date = models.DateField(auto_now_add=True)
+    post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='category ')
 
     def __str__(self):
