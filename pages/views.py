@@ -78,6 +78,25 @@ class DeletePostView(DeleteView):
 def about(request):
     return render(request, "about.html", {})
 
+def Site_N101(request):
+    return render(request, "N101.html", {})
+
+def Site_N102(request):
+    return render(request, "N102.html", {})
+
+
+def Site_N103(request):
+    return render(request, "N103.html", {})
+
+
+def Site_N106(request):
+    return render(request, "N106.html", {})
+
+
+def Site_N109(request):
+    return render(request, "N109.html", {})
+
+
 
 def contact(request):
     return render(request, "contact.html", {})

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<br></br>
+
+{% if user.is_authenticated %}
+
+
+
+
+
+    <h5>N101 현장 굴착일보</h5>
+
+    <div class="form-group">
+
+
+
+    <table>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+
+    </table>
+        <button class="btn btn-secondary">Save</button>
+
+    </div>
+
+
+
+
+{% else %}
+
+Login first!
+
+{% endif %}
+
+
+{% endblock %}
