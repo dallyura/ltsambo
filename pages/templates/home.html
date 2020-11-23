@@ -36,7 +36,11 @@
 <br></br>
 
 
-    <h5>Testing(LT SAMBO Site Summary)</h5>
+    <h5>이 웹사이트는 각 현장별 굴착일보 정리를 위한 사이트입니다. <br></br>
+       세부 작성 방법은 About 페이지를 참고해주세요. <br></br>
+      로그인 후 각 현장별 페이지를 클릭해주세요.
+
+    </h5>
 
 
 
@@ -45,10 +49,23 @@
 
 
 {% if user.is_authenticated %}
+  <h5>각 현장별 굴착 현황 <br></br>
 
+  </h5>
 
   <ul>
+  <a class="btn btn-secondary" href="{% url 'about' %}" role="button">N101</a>
+  <a class="btn btn-secondary" href="{% url 'about' %}" role="button">N102</a>
+  <a class="btn btn-secondary" href="{% url 'about' %}" role="button">N103</a>
+  <a class="btn btn-secondary" href="{% url 'about' %}" role="button">N106</a>
+  <a class="btn btn-secondary" href="{% url 'about' %}" role="button">N109</a>
+
+<br></br>
+
+<br></br>
+
   {% for post in object_list %}
+
 
     <li>{{ post.author }} - <a href="{% url 'category' post.category %}"> - {{ post.category }} -- <a href="{% url 'panel_details' post.pk %}"
     >--{{ post.Panel_name }}--</a>-{{ post.Operator_name }} -- {{ post.Depth }} -- {{ post.post_date }}--<small>
