@@ -35,3 +35,34 @@ class Post(models.Model):
     def get_absolute_url(self):
         # return reverse('panel_details', args=(str(self.id)))
         return reverse('home')
+
+
+# Create your models here.
+
+
+#for N101 양식
+
+class Board_N101(models.Model):
+    Site = models.CharField(max_length=10, null=False)
+    Operator = models.CharField(max_length=10, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Memo = models.CharField(max_length=30, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
+#for N102 양식
+class Board(models.Model):
+    Site = models.CharField(max_length=10, null=False)
+    Operator = models.CharField(max_length=10, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Memo = models.CharField(max_length=30, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
+

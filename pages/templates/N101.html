@@ -1,33 +1,96 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
-
-<br></br>
 
 {% if user.is_authenticated %}
 
+{% load static %}
+
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> N101 Excavation Report </title>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+            <div class="container d-flex justify-content-between">
+                <a href="/" class="navbar-brand d-flex align-items-center">
+                    <strong>N101 Excavation Report</strong>
+                </a>
+            </div>
+        </div>
+    </header>
 
 
+    <div class="container">
+        <table class="table">
+            <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Site</th>
+                <th scope="col">Operator</th>
+                <th scope="col">Time</th>
+                <th scope="col">Panel_No</th>
+                <th scope="col">Bite</th>
+                <th scope="col">Depth</th>
+                <th scope="col">Memo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for board_n101 in boards_n101 %}
+            <tr class="text-center">
+                <th scope="row">
+                    <span>{{ board_n101.id }}</span>
+                </th>
+                <td>
+                    <a href="/N101/{{ board_n101.id }}">
+                        <span>{{ board_n101.Site }}</span>
+                    </a>
+                </td>
 
+                <td>
+                    <span>{{ board_n101.Operator }}</span>
+                </td>
 
-    <h5>N101 현장 굴착일보</h5>
+                 <td>
+                    <span>{{ board_n101.created_date | date:"Y-m-d h:i" }}</span>
+                </td>
 
-    <div class="form-group">
+                <td>
+                    <span>{{ board_n101.Panel_No }}</span>
+                </td>
 
+                <td>
+                    <span>{{ board_n101.Bite }}</span>
+                </td>
 
+                <td>
+                    <span>{{ board_n101.Depth }}</span>
+                </td>
 
-    <table>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_ul }}
+                <td>
+                    <span>{{ board_n101.Memo }}</span>
+                </td>
 
-    </table>
-        <button class="btn btn-secondary">Save</button>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <a class="btn btn-primary" href="/post_n101" role="button">Update</a>
+            </div>
+        </div>
 
+        <a href="{% url 'export-csv' %}" class="btn btn-secondary">Export CSV</a>
     </div>
-
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+    </html>
 
 
 

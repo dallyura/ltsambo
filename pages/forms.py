@@ -12,7 +12,6 @@ for item in choices:
     choice_list.append(item)
 
 
-
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post

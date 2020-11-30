@@ -8,7 +8,9 @@ from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
 import csv
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
+from .models import *
+import datetime
 
 
 # def home(request):
@@ -79,10 +81,43 @@ def about(request):
     return render(request, "about.html", {})
 
 def Site_N101(request):
-    return render(request, "N101.html", {})
+    boards_n101 = {'boards_n101': Board_N101.objects.all()}
+    return render(request, 'N101.html', boards_n101)
+
+
+def Post_N101(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Memo = request.POST['Memo']
+
+        board_n101 = Board_N101(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Memo=Memo)
+        board_n101.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_n101.html')
 
 def Site_N102(request):
-    return render(request, "N102.html", {})
+    boards = {'boards': Board.objects.all()}
+    return render(request, 'N102.html', boards)
+
+def Post_N102(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Memo = request.POST['Memo']
+
+        board = Board(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Memo=Memo)
+        board.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_n102.html')
 
 
 def Site_N103(request):
@@ -177,22 +212,40 @@ def change_password(request):
     return render(request, 'change_password.html', context)
 
 
-# def export_csv(request):
-#
-#     response = HttpResponse(content_type='text/csv')
-#
-#     request['Content-Disposition'] = 'attachment; filename="post.csv"'
-#
-#     writer = csv.writer(response)
-#     writer.writerow(['Panel_name', 'Site_name', 'Operator_name', 'Depth', 'post_date', 'category'])
-#
-#     mypost = Post.objects.all().values_list('Panel_name', 'Site_name', 'Operator_name', 'Depth', 'post_date', 'category')
-#
-#     for obj in mypost:
-#         writer.writerow(obj)
-#
-#     return response
-#
+
+
+def export_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Memo'])
+
+    for board_n101 in Board_N101.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Memo'):
+        writer.writerow(board_n101)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_N101.csv"'
+
+    return response
+
+
+def export_N102_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Memo'])
+
+    for board in Board.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Memo'):
+        writer.writerow(board)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_N102.csv"'
+
+    return response
+
+
+
+
 # class CSVFileView(HomeView):
 #     def get(self, request, *args, **kwargs):
 #         response = HttpResponse(content_type='text/csv')

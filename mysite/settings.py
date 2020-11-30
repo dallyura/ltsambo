@@ -1,4 +1,4 @@
-
+import os
 from pathlib import Path
 #
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -96,13 +96,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -119,6 +119,16 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 
 ]
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
 
 
 
