@@ -100,6 +100,18 @@ def Post_N101(request):
     else:
         return render(request, 'post_n101.html')
 
+
+def Site_N101_delete(request, id):
+    board_n101 = Board_N101.objects.get(id=id)
+    board_n101.delete()
+    return redirect(request, "/N101")
+
+def Site_N101_edit(request, id):
+    board_n101 = Board_N101.objects.get(id=id)
+    return render(request,'edit_n101.html', {'board_n101': board_n101})
+
+
+
 def Site_N102(request):
     boards = {'boards': Board.objects.all()}
     return render(request, 'N102.html', boards)
@@ -118,6 +130,12 @@ def Post_N102(request):
         return HttpResponseRedirect('/')
     else:
         return render(request, 'post_n102.html')
+
+
+def Site_N102_delete(request, id):
+    board = Board.objects.get(id=id)
+    board.delete()
+    return redirect("/N102")
 
 
 def Site_N103(request):
@@ -243,21 +261,3 @@ def export_N102_csv(request):
 
     return response
 
-
-
-
-# class CSVFileView(HomeView):
-#     def get(self, request, *args, **kwargs):
-#         response = HttpResponse(content_type='text/csv')
-#         cd = 'attachment; filename="{0}"' .format('report.csv')
-#         request['Content-Disposition'] = cd
-#
-#         filenames = ('Panel_name', 'Site_name', 'Operator_name', 'Depth', 'post_date', 'category')
-#         data = Post.objects.values(*filenames)
-#         writer = csv.DictWriter(response, fieldnames=filenames)
-#         writer.writeheader()
-#
-#         for row in data:
-#             writer.writerow(row)
-#
-#         return response

@@ -37,6 +37,7 @@
                 <th scope="col">Bite</th>
                 <th scope="col">Depth</th>
                 <th scope="col">Memo</th>
+                <th scope="col">#</th>
             </tr>
             </thead>
             <tbody>
@@ -75,6 +76,13 @@
                     <span>{{ board.Memo }}</span>
                 </td>
 
+                <td>
+                    <a href="/edit/{{ board.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="/delete_N102/{{ board.id }}"><span class="btn btn-success">Delete</span></a>
+
+                </td>
+
+
             </tr>
             {% endfor %}
             </tbody>
@@ -87,6 +95,7 @@
         </div>
 
         <a href="{% url 'export-n102-csv' %}" class="btn btn-secondary">Export CSV</a>
+        <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
 
 
     </div>

@@ -37,6 +37,8 @@
                 <th scope="col">Bite</th>
                 <th scope="col">Depth</th>
                 <th scope="col">Memo</th>
+                <th scope="col">#</th>
+
             </tr>
             </thead>
             <tbody>
@@ -46,8 +48,8 @@
                     <span>{{ board_n101.id }}</span>
                 </th>
                 <td>
-                    <a href="/N101/{{ board_n101.id }}">
-                        <span>{{ board_n101.Site }}</span>
+<!--                    <a href="/N101/{{ board_n101.id }}">-->
+                    <span>{{ board_n101.Site }}</span>
                     </a>
                 </td>
 
@@ -75,6 +77,15 @@
                     <span>{{ board_n101.Memo }}</span>
                 </td>
 
+                <td>
+                    <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="/delete/{{ board_n101.id }}"><span class="btn btn-success">Delete</span></a>
+
+                </td>
+
+
+
+
             </tr>
             {% endfor %}
             </tbody>
@@ -87,6 +98,8 @@
         </div>
 
         <a href="{% url 'export-csv' %}" class="btn btn-secondary">Export CSV</a>
+        <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
+
     </div>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     </body>

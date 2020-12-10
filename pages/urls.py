@@ -23,13 +23,17 @@ urlpatterns = [
     path('category-list/', CategoryListView, name='category-list'),
     path('N101/',views.Site_N101, name='N101'),
     path('post_n101/', views.Post_N101, name='post_n101'),
+    path('delete/<int:id>', views.Site_N101_delete),
+    path('edit/<int:id>', views.Site_N101_edit),
     path('N102/',views.Site_N102, name='N102'),
     path('post_n102/', views.Post_N102, name='post_n102'),
+    path('delete_N102/<int:id>', views.Site_N102_delete),
     path('N103/',views.Site_N103, name='N103'),
     path('N106/',views.Site_N106, name='N106'),
     path('N109/',views.Site_N109, name='N109'),
     path('export_csv', views.export_csv, name='export-csv'),
     path('export_N102_csv', views.export_N102_csv, name='export-n102-csv'),
+
 
 ]
 

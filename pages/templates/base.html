@@ -24,7 +24,8 @@
 
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">LT SAMBO</a>
+
+  <a class="navbar-brand" href="{% url 'home' %}">LT SAMBO</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -41,29 +42,29 @@
         <a class="nav-link" href="{% url 'about' %}">About</a>
       </li>
 
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'add_post' %}">Add data</a>
-      </li>
+<!--        <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'add_post' %}">Add data</a>-->
+<!--      </li>-->
 
-         <li class="nav-item active">
-        <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
-      </li>
+<!--         <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>-->
+<!--      </li>-->
 
 
 
         <!-- Categroy Menu code -->
         {% if cat_menu %}
 
-         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select Site
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--         <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Select Site-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
 
 
-            {% for item in cat_menu %}
-            <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
-            {% endfor %}
+<!--            {% for item in cat_menu %}-->
+<!--            <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>-->
+<!--            {% endfor %}-->
 
 
 
@@ -72,9 +73,9 @@
 
     {% else %}
 
-        <li class="nav-item active">
-            <a class="nav-link" href="{% url 'category-list' %}">Site selection</a>
-       </li>
+<!--        <li class="nav-item active">-->
+<!--            <a class="nav-link" href="{% url 'category-list' %}">Site selection</a>-->
+<!--       </li>-->
 
 
 
@@ -84,20 +85,20 @@
        <li class="nav-item active">
         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'edit_profile' %}">Edit_Profile</a>
-       </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'change_password' %}">Change_Password</a>
-       </li>
+<!--        <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'edit_profile' %}">Edit_Profile</a>-->
+<!--       </li>-->
+<!--        <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'change_password' %}">Change_Password</a>-->
+<!--       </li>-->
 
      {% else %}
        <li class="nav-item active">
         <a class="nav-link" href="{% url 'login' %}">Login</a>
        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
-        </li>
+<!--        <li class="nav-item active">-->
+<!--        <a class="nav-link" href="{% url 'register' %}">Register</a>-->
+<!--        </li>-->
      {% endif %}
 
 

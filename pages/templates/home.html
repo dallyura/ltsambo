@@ -34,25 +34,25 @@
 </div>
 
 <br></br>
+<p class="text-primary">이 웹사이트는 각 현장별 굴착일보 정리를 위한 사이트입니다.
+       세부 작성 방법은 About 페이지를 참고해주세요.
+      로그인 후 각 현장별 페이지를 클릭해주세요.</p>
 
+    <br><br/>
 
-    <h5>이 웹사이트는 각 현장별 굴착일보 정리를 위한 사이트입니다. <br></br>
-       세부 작성 방법은 About 페이지를 참고해주세요. <br></br>
-      로그인 후 각 현장별 페이지를 클릭해주세요.
-
-    </h5>
-
-
-
+<p class="text-primary">This website for Excavation Report based on each worksite.
+      Please log-in and click your own work site! Only ~~~</p>
 
 <br></br>
 
-
 {% if user.is_authenticated %}
-  <h5>각 현장별 굴착 현황 <br></br>
+  <h5>
+    <p class="text-primary">Worksite in Singapore <br><br/>
+    Click your Site !
+    </p>
 
   </h5>
-
+  <br></br>
   <ul>
   <a class="btn btn-secondary" href="{% url 'N101' %}" role="button">N101</a>
   <a class="btn btn-secondary" href="{% url 'N102' %}" role="button">N102</a>
@@ -64,38 +64,38 @@
 
 <br></br>
 
-  {% for post in object_list %}
+<!--  {% for post in object_list %}-->
 
 
-    <li>{{ post.author }} - <a href="{% url 'category' post.category %}"> - {{ post.category }} -- <a href="{% url 'panel_details' post.pk %}"
-    >--{{ post.Panel_name }}--</a>-{{ post.Operator_name }} -- {{ post.Depth }} -- {{ post.post_date }}--<small>
-        <a href="{% url 'update_post' post.pk %}">Edit</a>
+<!--    <li>{{ post.author }} - <a href="{% url 'category' post.category %}"> - {{ post.category }} &#45;&#45; <a href="{% url 'panel_details' post.pk %}"-->
+<!--    >&#45;&#45;{{ post.Panel_name }}&#45;&#45;</a>-{{ post.Operator_name }} &#45;&#45; {{ post.Depth }} &#45;&#45; {{ post.post_date }}&#45;&#45;<small>-->
+<!--        <a href="{% url 'update_post' post.pk %}">Edit</a>-->
 
-        <a href="{% url 'delete_post' post.pk %}">Delete</a>
+<!--        <a href="{% url 'delete_post' post.pk %}">Delete</a>-->
 
-    </small><br/>
-    </li>
+<!--    </small><br/>-->
+<!--    </li>-->
 
-  {% endfor %}
-  </ul>
+<!--  {% endfor %}-->
+<!--  </ul>-->
 
-  <div class="col-md-4">
-    <a href ="{% url 'export_csv' % }" class ="btn btn-primary"> Export CSV</a>
+<!--  <div class="col-md-4">-->
+<!--    <a href ="{% url 'export_csv' % }" class ="btn btn-primary"> Export CSV</a>-->
 
-  </div>
+<!--  </div>-->
 
-{% else %}
+<!--{% else %}-->
 
-Please log-in first!!
+<!--Please log-in first!!-->
 
-{% endif %}
+<!--{% endif %}-->
 
 
 {% if user.is_authenticated %}
 <br></br>
 
 You Logged In our website !!
-<br></br>
+  <br></br>
     <p>Name : {{ user.first_name}} {{ user.last_name}}</p>
     <p>Username : {{ user.username}}</p>
     <p>Email : {{ user.email}}</p>

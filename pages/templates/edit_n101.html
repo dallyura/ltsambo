@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% load static %}
+
+
+<div class="container">
+    <form action="/edit/{{ board_n101.id }} " method="post" class="post-form">
+        <input type="hidden" name="id" id="id" required maxlength="20" value="{{ board_n101.id }}"/>
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <label  class="col-sm-2 col-form-label"><strong>Operator</strong></label>
+            <div class="col-sm-3">
+                <input type="text" name="Operator" value="{{ board_n101.Operator }}" class="form-control" id="inputAuthor">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Panel_No</strong></label>
+            <div class="col-sm-3">
+                <textarea type="text" name="Panel_No" value="{{ board_n101.Panel_No }}" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Bite</strong></label>
+            <div class="col-sm-3">
+                <textarea type="text" name="Bite" value="{{ board_n101.Bite }}"  class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Depth</strong></label>
+            <div class="col-sm-3">
+                <textarea type="text" name="Depth"  value="{{ board_n101.Depth }}" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Memo</strong></label>
+            <div class="col-sm-3">
+                <textarea type="text" name="Memo" value="{{ board_n101.Memo }}" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <input class="btn btn-primary" type="submit" role="button" value="Edit">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% else %}
+
+Login first!
+
+{% endif %}
+
+
+{% endblock %}
