@@ -104,13 +104,7 @@ def Post_N101(request):
 def Site_N101_delete(request, id):
     board_n101 = Board_N101.objects.get(id=id)
     board_n101.delete()
-    return redirect(request, "/N101")
-
-def Site_N101_edit(request, id):
-    board_n101 = Board_N101.objects.get(id=id)
-    return render(request,'edit_n101.html', {'board_n101': board_n101})
-
-
+    return redirect("/N101")
 
 def Site_N102(request):
     boards = {'boards': Board.objects.all()}
@@ -139,16 +133,91 @@ def Site_N102_delete(request, id):
 
 
 def Site_N103(request):
-    return render(request, "N103.html", {})
+    boards_n103 = {'boards_n103': Board_N103.objects.all()}
+    return render(request, 'N103.html', boards_n103)
 
+
+def Post_N103(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Memo = request.POST['Memo']
+
+        board_n103 = Board_N103(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Memo=Memo)
+        board_n103.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_n103.html')
+
+def Site_N103_delete(request, id):
+    board_n103 = Board_N103.objects.get(id=id)
+    board_n103.delete()
+    return redirect("/N103")
 
 def Site_N106(request):
-    return render(request, "N106.html", {})
+    boards_n106 = {'boards_n106': Board_N106.objects.all()}
+    return render(request, 'N106.html', boards_n106)
 
+
+def Post_N106(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Memo = request.POST['Memo']
+
+        board_n106 = Board_N106(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Memo=Memo)
+        board_n106.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_n106.html')
+
+
+def Site_N106_delete(request, id):
+    board_n106 = Board_N106.objects.get(id=id)
+    board_n106.delete()
+    return redirect("/N106")
 
 def Site_N109(request):
-    return render(request, "N109.html", {})
+    boards_n109 = {'boards_n109': Board_N109.objects.all()}
+    return render(request, 'N109.html', boards_n109)
 
+
+def Post_N109(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Memo = request.POST['Memo']
+
+        board_n109 = Board_N109(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Memo=Memo)
+        board_n109.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_n109.html')
+
+
+def Site_N109_delete(request, id):
+    board_n109 = Board_N109.objects.get(id=id)
+    board_n109.delete()
+    return redirect("/N109")
+
+
+
+# def Site_N106(request):
+#     return render(request, "N106.html", {})
+#
+#
+# def Site_N109(request):
+#     return render(request, "N109.html", {})
+#
 
 
 def contact(request):
@@ -261,3 +330,44 @@ def export_N102_csv(request):
 
     return response
 
+def export_N103_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Memo'])
+
+    for board_n103 in Board_N103.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Memo'):
+        writer.writerow(board_n103)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_N103.csv"'
+
+    return response
+
+def export_N106_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Memo'])
+
+    for board_n106 in Board_N106.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Memo'):
+        writer.writerow(board_n106)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_N106.csv"'
+
+    return response
+
+def export_N109_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Memo'])
+
+    for board_n109 in Board_N109.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Memo'):
+        writer.writerow(board_n109)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_N109.csv"'
+
+    return response

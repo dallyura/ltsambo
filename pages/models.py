@@ -65,4 +65,39 @@ class Board(models.Model):
     modified_date = models.DateTimeField(auto_now=True)
 
 
+# for N103 양식
+class Board_N103(models.Model):
+    Site = models.CharField(max_length=10, null=False)
+    Operator = models.CharField(max_length=10, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Memo = models.CharField(max_length=30, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
+# for N106 양식
+class Board_N106(models.Model):
+    Site = models.CharField(max_length=10, null=False)
+    Operator = models.CharField(max_length=10, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Memo = models.CharField(max_length=30, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+
+# for N109 양식
+class Board_N109(models.Model):
+    Site = models.CharField(max_length=10, null=False)
+    Operator = models.CharField(max_length=10, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Memo = models.CharField(max_length=30, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
 

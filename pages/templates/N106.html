@@ -1,144 +1,117 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
 {% load static %}
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="{%  static 'images/favicon.png' %}">
-
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-    <title>
-      {% block title %}
-        LT SAMBO(Excavation Report)
-      {% endblock %}
-
-    </title>
-  </head>
-  <body>
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">LT SAMBO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-      </li>
-
-
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'about' %}">About</a>
-      </li>
-
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'add_post' %}">Add data</a>
-      </li>
-
-         <li class="nav-item active">
-        <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
-      </li>
-
-
-
-        <!-- Categroy Menu code -->
-        {% if cat_menu %}
-
-         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select Site
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
-            {% for item in cat_menu %}
-            <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
-            {% endfor %}
-
-
-
-        </div>
-      </li>
-
-    {% else %}
-
-        <li class="nav-item active">
-            <a class="nav-link" href="{% url 'category-list' %}">Site selection</a>
-       </li>
-
-
-
-        {% endif %}
-
-     {% if user.is_authenticated %}
-       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-       </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'edit_profile' %}">Edit_Profile</a>
-       </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'change_password' %}">Change_Password</a>
-       </li>
-
-     {% else %}
-       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-       </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
-        </li>
-     {% endif %}
-
-
-    </ul>
-  </div>
-</nav>
-
-    <br/>
-    <div class="container">
-      {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-warning alert-dismissable" role="alert">
-              <button class="close" data-dismiss="alert">
-                      <small><sup>x</sup></small>
-                  </button>
-              {{ message }}
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> N106 Excavation Report </title>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+            <div class="container d-flex justify-content-between">
+                <a href="/" class="navbar-brand d-flex align-items-center">
+                    <strong>N106 Excavation Report</strong>
+                </a>
             </div>
-        {% endfor %}
-      {% endif %}
+        </div>
+    </header>
 
 
-      {% block content %}
-      {% endblock %}
+    <div class="container">
+        <table class="table">
+            <thead class="thead-light">
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Site</th>
+                <th scope="col">Operator</th>
+                <th scope="col">Time</th>
+                <th scope="col">Panel_No</th>
+                <th scope="col">Bite</th>
+                <th scope="col">Depth</th>
+                <th scope="col">Memo</th>
+                <th scope="col">#</th>
 
+            </tr>
+            </thead>
+            <tbody>
+            {% for board_n106 in boards_n106 %}
+            <tr class="text-center">
+                <th scope="row">
+                    <span>{{ board_n106.id }}</span>
+                </th>
+                <td>
+                    <a href="/N106/{{ board_n106.id }}">
+                    <span>{{ board_n106.Site }}</span>
+                    </a>
+                </td>
+
+                <td>
+                    <span>{{ board_n106.Operator }}</span>
+                </td>
+
+                 <td>
+                    <span>{{ board_n106.created_date | date:"Y-m-d h:i" }}</span>
+                </td>
+
+                <td>
+                    <span>{{ board_n106.Panel_No }}</span>
+                </td>
+
+                <td>
+                    <span>{{ board_n106.Bite }}</span>
+                </td>
+
+                <td>
+                    <span>{{ board_n106.Depth }}</span>
+                </td>
+
+                <td>
+                    <span>{{ board_n106.Memo }}</span>
+                </td>
+
+                <td>
+                    <a href="/edit/{{ board_n106.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="/delete/{{ board_n106.id }}"><span class="btn btn-success">Delete</span></a>
+
+                </td>
+
+
+
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <a class="btn btn-primary" href="/post_n106" role="button">Update</a>
+            </div>
+        </div>
+
+        <a href="{% url 'export-n106-csv' %}" class="btn btn-secondary">Export CSV</a>
         <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
 
-     </div>
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    </body>
+    </html>
 
-     <br/><br/>
-     <center><small>Copyright &copy; LT SAMBO (Sinagpore) - All Rights Reserved</small></center>
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+{% else %}
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+Login first!
+
+{% endif %}
+
+
+{% endblock %}
