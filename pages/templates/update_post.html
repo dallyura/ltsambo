@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br></br>
+
+
+{% if user.is_authenticated %}
+
+    <h5>Update Data</h5>
+
+    <div class="form-group">
+
+
+
+    <table>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+
+    </table>
+        <button class="btn btn-secondary">Update</button>
+
+    </div>
+{% else %}
+
+You're not allowed Here !
+{% endif %}
+
+{% endblock %}

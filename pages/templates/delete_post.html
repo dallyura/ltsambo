@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br></br>
+
+
+<h5>Delete Data</h5>
+<h3>Delete: {{ post.panel_name }}</h3>
+<div class="form-group">
+
+
+<br/>
+<table>
+<form method="POST">
+    {% csrf_token %}
+    <strong>Are you Sure?! </strong><br/><br/><br/>
+    {{ form.as_ul }}
+
+</table>
+    <button class="btn btn-secondary">Delete</button>
+
+</div>
+
+{% endblock %}
