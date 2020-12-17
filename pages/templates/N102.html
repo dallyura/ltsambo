@@ -5,103 +5,107 @@
 {% if user.is_authenticated %}
 
 {% load static %}
-
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title> N102 Excavation Report </title>
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    </head>
-    <body>
-    <header>
-        <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-            <div class="container d-flex justify-content-between">
-                <a href="/" class="navbar-brand d-flex align-items-center">
-                    <strong>N102 Excavation Report</strong>
-                </a>
-            </div>
+<div class ="container">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> N102 Excavation Report </title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/style.css' %}" >
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>N102 Excavation Report</strong>
+            </a>
         </div>
-    </header>
-
-
-    <div class="container">
-        <table class="table">
-            <thead class="thead-light">
-            <tr class="text-center">
-                <th scope="col">#</th>
-                <th scope="col">Site</th>
-                <th scope="col">Operator</th>
-                <th scope="col">Time</th>
-                <th scope="col">Panel_No</th>
-                <th scope="col">Bite</th>
-                <th scope="col">Depth</th>
-                <th scope="col">Memo</th>
-                <th scope="col">#</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for board in boards %}
-            <tr class="text-center">
-                <th scope="row">
-                    <span>{{ board.id }}</span>
-                </th>
-                <td>
-                    <a href="/N102/{{ board.id }}">
-                        <span>{{ board.Site }}</span>
-                    </a>
-                </td>
-
-                <td>
-                    <span>{{ board.Operator }}</span>
-                </td>
-
-                 <td>
-                    <span>{{ board.created_date | date:"Y-m-d h:i" }}</span>
-                </td>
-
-                <td>
-                    <span>{{ board.Panel_No }}</span>
-                </td>
-
-                <td>
-                    <span>{{ board.Bite }}</span>
-                </td>
-
-                <td>
-                    <span>{{ board.Depth }}</span>
-                </td>
-
-                <td>
-                    <span>{{ board.Memo }}</span>
-                </td>
-
-                <td>
-                    <a href="/edit/{{ board.id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="/delete_N102/{{ board.id }}"><span class="btn btn-success">Delete</span></a>
-
-                </td>
-
-
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="row">
-            <div class="col-auto mr-auto"></div>
-            <div class="col-auto">
-                <a class="btn btn-primary" href="/post_n102" role="button">Update</a>
-            </div>
-        </div>
-
-        <a href="{% url 'export-n102-csv' %}" class="btn btn-secondary">Export CSV</a>
-        <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
-
-
     </div>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    </body>
-    </html>
+</header>
+
+
+<div class="responsive-container">
+
+    <a href="{% url 'export-n102-csv' %}" class="btn btn-secondary">Export CSV</a>
+    <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
+
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/post_n102" role="button">Update</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Site</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Time</th>
+            <th scope="col">Panel_No</th>
+            <th scope="col">Bite</th>
+            <th scope="col">Depth</th>
+            <th scope="col">Memo</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for board in boards %}
+        <tr class="text-center">
+            <th scope="row">
+<!--                <span>{{ board.id }}</span>-->
+            </th>
+            <td data-label="Site">
+<!--                    <a href="/N102/{{ board.id }}">-->
+                <span>{{ board.Site }}</span>
+                </a>
+            </td>
+
+            <td data-label="Operator">
+                <span>{{ board.Operator }}</span>
+            </td>
+
+             <td data-label="Time">
+                <span>{{ board.created_date | date:"Y-m-d h:i" }}</span>
+            </td>
+
+            <td data-label="Panel_No">
+                <span>{{ board.Panel_No }}</span>
+            </td>
+
+            <td data-label="Bite_No">
+                <span>{{ board.Bite }}</span>
+            </td>
+
+            <td data-label="Depth">
+                <span>{{ board.Depth }}</span>
+            </td>
+
+            <td data-label="Memo">
+                <span>{{ board.Memo }}</span>
+            </td>
+
+            <td>
+<!--                <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>-->
+                <a href="/delete_N102/{{ board.id }}"><span class="btn btn-success"  >Delete</span></a>
+
+            </td>
+
+
+
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
 
 
 
