@@ -3,7 +3,6 @@
 
 {% block content %}
 {% load embed_video_tags %}
-<link rel="stylesheet" href="{% static 'bootstrap/css/style.css' %}" >
 <h2>LT SAMBO YouTube</h2>
 {% for i in obj %}
 {% video i.video 'tiny' %}
