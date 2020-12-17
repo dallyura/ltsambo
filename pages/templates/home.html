@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 
 {% block content %}
 
-{% load static %}
+
+
+
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -34,17 +36,27 @@
 </div>
 
 <br></br>
+<div class="container">
+
+
 
 <p class="text-primary">Log-in First then you can click your work site! (로그인 먼저 해주시고, 각 현장으로 접속하시면 됩니다.) </p>
 
+</div>
+
 {% if user.is_authenticated %}
   <div class="container">
+
+
 
     <h2 class="mt-4 mb-3">LT SAMBO
       <small>EXCAVATION REPORT</small>
     </h2>
 
+
     <p></a>Welcome to LT SAMBO</p>
+
+
 
   </div>
 
@@ -95,7 +107,7 @@
         <div class="card h-100">
           <h4 class="card-header">NSC 106</h4>
           <div class="card-body">
-            <p class="card-text">Site Name : North South Corridor 103</p>
+            <p class="card-text">Site Name : North South Corridor 106</p>
           </div>
           <div class="card-footer">
             <a href="{% url 'N106' %}" class="btn btn-primary">Click</a>
@@ -108,7 +120,7 @@
         <div class="card h-100">
           <h4 class="card-header">NSC 109</h4>
           <div class="card-body">
-            <p class="card-text">Site Name : North South Corridor 103</p>
+            <p class="card-text">Site Name : North South Corridor 109</p>
           </div>
           <div class="card-footer">
             <a href="{% url 'N109' %}" class="btn btn-primary">Click</a>
@@ -128,8 +140,8 @@
 <!--  {% for post in object_list %}-->
 
 
-<!--    <li>{{ post.author }} - <a href="{% url 'category' post.category %}"> - {{ post.category }} &#45;&#45; <a href="{% url 'panel_details' post.pk %}"-->
-<!--    >&#45;&#45;{{ post.Panel_name }}&#45;&#45;</a>-{{ post.Operator_name }} &#45;&#45; {{ post.Depth }} &#45;&#45; {{ post.post_date }}&#45;&#45;<small>-->
+<!--    <li>{{ post.author }} - <a href="{% url 'category' post.category %}"> - {{ post.category }} -- <a href="{% url 'panel_details' post.pk %}"-->
+<!--    >--{{ post.Panel_name }}--</a>-{{ post.Operator_name }} -- {{ post.Depth }} -- {{ post.post_date }}--<small>-->
 <!--        <a href="{% url 'update_post' post.pk %}">Edit</a>-->
 
 <!--        <a href="{% url 'delete_post' post.pk %}">Delete</a>-->
