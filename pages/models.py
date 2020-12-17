@@ -3,9 +3,9 @@ from django.urls import reverse
 from datetime import datetime, date
 from django.db import models
 from embed_video.fields import EmbedVideoField
-
-class Item(models.Model):
-    video = EmbedVideoField()  # same like models.URLField()
+#
+# class Item(models.Model):
+#     video = EmbedVideoField()  # same like models.URLField()
 
 
 class Category(models.Model):

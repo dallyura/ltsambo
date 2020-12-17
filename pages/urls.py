@@ -7,7 +7,7 @@ urlpatterns = [
 
     # path('',views.home, name='home'),
     path('', HomeView.as_view(), name='home'),
-    path('about/',views.video),
+    # path('about/',views.video),
     path('tel307/<int:pk>', PanelDetailView.as_view(), name='panel_details'),
     path('add_post/', AddPostView.as_view(), name='add_post'),
     path('add_category/', AddCategoryView.as_view(), name='add_category'),
