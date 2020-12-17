@@ -16,7 +16,7 @@ SECRET_KEY = 'mezv=8+8+k@e1zq456^=s%sohy^pdz=o#kpjoj@8wl3=@p8*6@'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['18.139.128.167']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
