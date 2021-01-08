@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import Post, Category
 
-# choices = [('coding'),(), ()]
+choices = [('coding'),(), ()]
 
 choices = Category.objects.all().values_list('name','name')
 

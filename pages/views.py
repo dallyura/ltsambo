@@ -13,12 +13,12 @@ from .models import *
 import datetime
 
 
-# def home(request):
-#     return render(request,"home.html", {})
-#
-# def video(request):
-#     obj=Item.objects.all()
-#     return render(request,'about.html',{'obj':obj})
+def home(request):
+    return render(request,"home.html", {})
+
+def video(request):
+    obj=Item.objects.all()
+    return render(request,'about.html',{'obj':obj})
 
 class HomeView(ListView):
     model = Post
