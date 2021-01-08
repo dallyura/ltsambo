@@ -221,6 +221,34 @@ def Site_N109_delete(request, id):
     return redirect("/N109")
 
 
+def Site_T316(request):
+    boards_t316 = {'boards_t316': Board_T316.objects.all()}
+    return render(request, 'T316.html', boards_t316)
+
+
+def Post_T316(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Geo_Type = request.POST['Geo_Type']
+        Memo = request.POST['Memo']
+
+        board_t316 = Board_T316(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_t316.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_t316.html')
+
+
+def Site_T316_delete(request, id):
+    board_t316 = Board_T316.objects.get(id=id)
+    board_t316.delete()
+    return redirect("/T316")
+
+
 
 # def Site_N106(request):
 #     return render(request, "N106.html", {})
@@ -380,5 +408,20 @@ def export_N109_csv(request):
         writer.writerow(board_n109)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N109.csv"'
+
+    return response
+
+
+def export_T316_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Geo_Type','Memo'])
+
+    for board_t316 in Board_T316.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'):
+        writer.writerow(board_t316)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_T316.csv"'
 
     return response

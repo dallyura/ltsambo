@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% load static %}
+<div class ="container">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> T316 Excavation Report </title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/style.css' %}" >
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>T316 Excavation Report</strong>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<div class="responsive-container">
+
+    <a href="{% url 'export-t316-csv' %}" class="btn btn-secondary">Export CSV</a>
+    <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
+
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/post_t316" role="button">Update</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Site</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Time</th>
+            <th scope="col">Panel_No</th>
+            <th scope="col">Bite</th>
+            <th scope="col">Depth</th>
+            <th scope="col">Geo type</th>
+            <th scope="col">Memo</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for board_t316 in boards_t316 %}
+        <tr class="text-center">
+            <th scope="row">
+<!--                <span>{{ board_n101.id }}</span>-->
+            </th>
+            <td data-label="Site">
+<!--                    <a href="/N101/{{ board_n101.id }}">-->
+                <span>{{ board_t316.Site }}</span>
+                </a>
+            </td>
+
+            <td data-label="Operator">
+                <span>{{ board_t316.Operator }}</span>
+            </td>
+
+             <td data-label="Time">
+                <span>{{ board_t316.created_date | date:"Y-m-d h:i" }}</span>
+            </td>
+
+            <td data-label="Panel_No">
+                <span>{{ board_t316.Panel_No }}</span>
+            </td>
+
+            <td data-label="Bite_No">
+                <span>{{ board_t316.Bite }}</span>
+            </td>
+
+            <td data-label="Depth">
+                <span>{{ board_t316.Depth }}</span>
+            </td>
+
+            <td data-label="Geo_Type">
+                <span>{{ board_t316.Geo_Type }}</span>
+            </td>
+
+            <td data-label="Memo">
+                <span>{{ board_t316.Memo }}</span>
+            </td>
+
+            <td>
+<!--                <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>-->
+                <a href="/delete_t316/{{ board_t316.id }}" class="btn btn-secondary btn-sm"  >Delete</a>
+
+            </td>
+
+
+
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
+
+
+
+{% else %}
+
+Login first!
+
+{% endif %}
+
+
+{% endblock %}

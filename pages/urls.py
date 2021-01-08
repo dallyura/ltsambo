@@ -47,6 +47,12 @@ urlpatterns = [
     path('N109/', views.Site_N109, name='N109'),
     path('post_n109/', views.Post_N109, name='post_n109'),
     path('delete_N109/<int:id>', views.Site_N109_delete),
-    path('export_N1069_csv', views.export_N109_csv, name='export-n109-csv'),
+    path('export_N109_csv', views.export_N109_csv, name='export-n109-csv'),
+    # T316
+    path('T316/', views.Site_T316, name='T316'),
+    path('post_t316/', views.Post_T316, name='post_t316'),
+    path('delete_T316/<int:id>', views.Site_T316_delete),
+    path('export_T316_csv', views.export_T316_csv, name='export-t316-csv'),
 ]
+
 
