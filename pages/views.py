@@ -94,12 +94,13 @@ def Post_N101(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board_n101 = Board_N101(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_n101 = Board_N101(Site=Site, Operator=Operator, Panel_No=Panel_No, Activity=Activity,  Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board_n101.save()
         return HttpResponseRedirect('/')
     else:
@@ -122,12 +123,13 @@ def Post_N102(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board = Board(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board = Board(Site=Site, Operator=Operator, Panel_No=Panel_No,  Activity=Activity, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board.save()
         return HttpResponseRedirect('/')
     else:
@@ -150,12 +152,13 @@ def Post_N103(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board_n103 = Board_N103(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_n103 = Board_N103(Site=Site, Operator=Operator, Panel_No=Panel_No,  Activity=Activity, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board_n103.save()
         return HttpResponseRedirect('/')
     else:
@@ -176,12 +179,13 @@ def Post_N106(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board_n106 = Board_N106(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_n106 = Board_N106(Site=Site, Operator=Operator, Panel_No=Panel_No,  Activity=Activity,  Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board_n106.save()
         return HttpResponseRedirect('/')
     else:
@@ -203,12 +207,13 @@ def Post_N109(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board_n109 = Board_N109(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_n109 = Board_N109(Site=Site, Operator=Operator, Panel_No=Panel_No, Activity=Activity,  Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board_n109.save()
         return HttpResponseRedirect('/')
     else:
@@ -231,12 +236,13 @@ def Post_T316(request):
         Site = request.POST['Site']
         Operator = request.POST['Operator']
         Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
         Bite = request.POST['Bite']
         Depth = request.POST['Depth']
         Geo_Type = request.POST['Geo_Type']
         Memo = request.POST['Memo']
 
-        board_t316 = Board_T316(Site=Site, Operator=Operator, Panel_No=Panel_No, Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
+        board_t316 = Board_T316(Site=Site, Operator=Operator, Panel_No=Panel_No, Activity=Activity,  Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Memo=Memo)
         board_t316.save()
         return HttpResponseRedirect('/')
     else:
@@ -345,9 +351,9 @@ def export_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Geo_Type', 'Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity',  'Bite', 'Depth', 'Geo_Type', 'Memo'])
 
-    for board_n101 in Board_N101.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Geo_Type', 'Memo'):
+    for board_n101 in Board_N101.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth', 'Geo_Type', 'Memo'):
         writer.writerow(board_n101)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N101.csv"'
@@ -360,9 +366,9 @@ def export_N102_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'])
 
-    for board in Board.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth', 'Geo_Type','Memo'):
+    for board in Board.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth', 'Geo_Type','Memo'):
         writer.writerow(board)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N102.csv"'
@@ -374,9 +380,9 @@ def export_N103_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Geo_Type','Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity', 'Bite', 'Depth', 'Geo_Type','Memo'])
 
-    for board_n103 in Board_N103.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'):
+    for board_n103 in Board_N103.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'):
         writer.writerow(board_n103)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N103.csv"'
@@ -388,9 +394,9 @@ def export_N106_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'])
 
-    for board_n106 in Board_N106.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'):
+    for board_n106 in Board_N106.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'):
         writer.writerow(board_n106)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N106.csv"'
@@ -402,9 +408,9 @@ def export_N109_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Geo_Type','Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity',  'Bite', 'Depth', 'Geo_Type','Memo'])
 
-    for board_n109 in Board_N109.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'):
+    for board_n109 in Board_N109.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'):
         writer.writerow(board_n109)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_N109.csv"'
@@ -417,9 +423,9 @@ def export_T316_csv(request):
     response = HttpResponse(content_type='text/csv')
 
     writer = csv.writer(response)
-    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Bite', 'Depth', 'Geo_Type','Memo'])
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity', 'Bite', 'Depth', 'Geo_Type','Memo'])
 
-    for board_t316 in Board_T316.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Bite', 'Depth','Geo_Type', 'Memo'):
+    for board_t316 in Board_T316.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Memo'):
         writer.writerow(board_t316)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_T316.csv"'
