@@ -45,8 +45,8 @@ class Post(models.Model):
 #for N101 양식
 
 class Board_N101(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
@@ -59,8 +59,8 @@ class Board_N101(models.Model):
 
 #for N102 양식
 class Board(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
@@ -73,8 +73,8 @@ class Board(models.Model):
 
 # for N103 양식
 class Board_N103(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
@@ -87,8 +87,8 @@ class Board_N103(models.Model):
 
 # for N106 양식
 class Board_N106(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
@@ -101,8 +101,8 @@ class Board_N106(models.Model):
 
 # for N109 양식
 class Board_N109(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
@@ -115,8 +115,8 @@ class Board_N109(models.Model):
 
 # for T316 양식
 class Board_T316(models.Model):
-    Site = models.CharField(max_length=10, null=False)
-    Operator = models.CharField(max_length=10, null=False)
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=20, null=False)
     Panel_No = models.CharField(max_length=20, null=False)
     Activity = models.CharField(max_length=20, null=False)
     Bite = models.CharField(max_length=20, null=False)
