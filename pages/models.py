@@ -52,7 +52,7 @@ class Board_N101(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -66,7 +66,7 @@ class Board(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -80,7 +80,7 @@ class Board_N103(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -94,7 +94,7 @@ class Board_N106(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -108,7 +108,7 @@ class Board_N109(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
@@ -122,6 +122,6 @@ class Board_T316(models.Model):
     Bite = models.CharField(max_length=20, null=False)
     Depth = models.CharField(max_length=20, null=False)
     Geo_Type = models.CharField(max_length=20, null=False)
-    Memo = models.CharField(max_length=30, null=False)
+    Memo = models.CharField(max_length=50, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
