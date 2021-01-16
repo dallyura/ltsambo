@@ -112,7 +112,7 @@
         </tr>
         {% endfor %}
         </tbody>
-        <p id="hidden_id"></p>
+        <p id="hidden_id" style="display: none;"></p>
     </table>
     <div id="deleteAlertModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -143,8 +143,6 @@
 
     function clickEvent(id) {
         document.getElementById('hidden_id').value=id;
-        console.log(id)
-
     }
 </script>
 
