@@ -114,6 +114,10 @@ def Site_N101_delete(request, id):
     return redirect("/N101")
 
 
+def N101_Info(request):
+    return render(request, "N101_info.html", {})
+
+
 
 def Site_N102(request):
     boards = {'boards': Board.objects.all()}

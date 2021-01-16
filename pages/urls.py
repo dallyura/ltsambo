@@ -28,6 +28,8 @@ urlpatterns = [
     path('delete/<int:id>', views.Site_N101_delete),
     path('export_csv', views.export_csv, name='export-csv'),
     # path('edit/<int:id>', views.Site_N101_edit),
+    path('N101_info/', views.N101_Info, name='N101_info'),
+
     #N102
     path('N102/',views.Site_N102, name='N102'),
     path('post_n102/', views.Post_N102, name='post_n102'),

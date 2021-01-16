@@ -102,23 +102,55 @@
                 <span>{{ board_n106.Memo }}</span>
             </td>
 
-            <td>
+             <td>
 <!--                <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>-->
-                <a href="/delete_N106/{{ board_n106.id }}" class="btn btn-secondary btn-sm"  >Delete</a>
+<!--                    <a href="/delete_N103/{{ board_n103.id }}" class="btn btn-secondary btn-sm"  >Delete</a>    -->
 
+                <a href="#" id="{{board_n106.id}}"  data-toggle="modal" data-target="#deleteAlertModal" onclick="clickEvent(id)" class="btn btn-secondary btn-sm">Delete<ion-icon name="trash"></ion-icon></a>
             </td>
-
-
-
 
         </tr>
         {% endfor %}
         </tbody>
+        <p id="hidden_id" style="display: none;"></p>
     </table>
+    <div id="deleteAlertModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Alert!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <div class="modal-body">
+               <p>Are you sure?</p>
+               <p>진짜로 내용을 삭제하시겠습니까?</p>
+           </div>
+           <div class="modal-footer">
+              <button onclick="deleteExecute()" type="button" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+           </div>
+          </div>
+        </div>
+    </div>
 
 </div>
 
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script>
+    function deleteExecute() {
+        location.replace("/delete_N106/" + document.getElementById('hidden_id').value);
+    }
+
+    function clickEvent(id) {
+        document.getElementById('hidden_id').value=id;
+    }
+</script>
+
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}">
+
+</script>
 </body>
 </html>
 
