@@ -106,47 +106,52 @@
 <!--                <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>-->
 <!--                    <a href="/delete_N103/{{ board_n103.id }}" class="btn btn-secondary btn-sm"  >Delete</a>    -->
 
-                    <a href="/delete_N103/{{ board_n103.id }}" data-toggle="modal" data-target="#CatModal">Delete<ion-icon name="trash"></ion-icon></a>
-
-                <div id="CatModal" class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">UOSCAT</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                       <div class="modal-body">
-                          <p>진짜로 내용을 삭제하시겠습니까?</p>
-                       </div>
-                       <div class="modal-footer">
-                          <button onclick="CatDelete()" type="button" class="btn btn-primary">삭제하기</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
-                       </div>
-                      </div>
-                    </div>
-                </div>
-
+                <a href="#" id="{{board_n103.id}}"  data-toggle="modal" data-target="#deleteAlertModal" onclick="clickEvent(id)" class="btn btn-secondary btn-sm">Delete<ion-icon name="trash"></ion-icon></a>
             </td>
-
-
-
 
         </tr>
         {% endfor %}
         </tbody>
+        <p id="hidden_id"></p>
     </table>
-
+    <div id="deleteAlertModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">UOSCAT</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <div class="modal-body">
+              <p>진짜로 내용을 삭제하시겠습니까?</p>
+           </div>
+           <div class="modal-footer">
+              <button onclick="deleteExecute()" type="button" class="btn btn-primary">삭제하기</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+           </div>
+          </div>
+        </div>
+    </div> 
+    
 </div>
 
-function CommentDelete(){
-<!--                       var comment_id = $('.hidden_comment_id').text();-->
-        location.replace("/delete_N103/{{ board_n103.id }}/commentdelete/"+comment_id);
-        }
+<script>
+    function deleteExecute() {
+        location.replace("/delete_N103/" + document.getElementById('hidden_id').value);
+    }
+
+    function clickEvent(id) {
+        document.getElementById('hidden_id').value=id;
+        console.log(id)
+
+    }
+</script>
 
 
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}">
+    
+</script>
 </body>
 </html>
 
