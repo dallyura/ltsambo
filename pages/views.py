@@ -485,3 +485,4 @@ def export_Labrador_BC1_csv(request):
     response['Content-Disposition'] = 'attachment; filename="CSV_Labrador_BC1.csv"'
 
     return response
+
