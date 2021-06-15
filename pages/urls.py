@@ -55,6 +55,11 @@ urlpatterns = [
     path('post_t316/', views.Post_T316, name='post_t316'),
     path('delete_T316/<int:id>', views.Site_T316_delete),
     path('export_T316_csv', views.export_T316_csv, name='export-t316-csv'),
+# Labrador_BC1
+    path('Labrador_BC1/', views.Site_Labrador_BC1, name='Labrador_BC1'),
+    path('post_labrador_BC1/', views.Post_Labrador_BC1, name='post_labrador_BC1'),
+    path('delete_Labrador_BC1/<int:id>', views.Site_Labrador_BC1_delete),
+    path('export_Labrador_BC1_csv', views.export_Labrador_BC1_csv, name='export-labrador_BC1-csv'),
 ]
 
 

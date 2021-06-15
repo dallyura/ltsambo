@@ -131,3 +131,17 @@ class Board_T316(models.Model):
     Memo = models.CharField(max_length=70, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+# for Labrador_BC1 양식
+class Board_Labrador_BC1(models.Model):
+    Site = models.CharField(max_length=20, null=False)
+    Operator = models.CharField(max_length=50, null=False)
+    Panel_No = models.CharField(max_length=20, null=False)
+    Activity = models.CharField(max_length=40, null=False)
+    Bite = models.CharField(max_length=20, null=False)
+    Depth = models.CharField(max_length=20, null=False)
+    Geo_Type = models.CharField(max_length=20, null=False)
+    Tooth_Qty = models.CharField(max_length=40, null=False)
+    Memo = models.CharField(max_length=70, null=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)

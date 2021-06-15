@@ -264,6 +264,36 @@ def Site_T316_delete(request, id):
     board_t316.delete()
     return redirect("/T316")
 
+def Site_Labrador_BC1(request):
+    boards_labrador_BC1 = {'boards_labrador_BC1': Board_Labrador_BC1.objects.all()}
+    return render(request, 'Labrador_BC1.html', boards_labrador_BC1)
+
+
+def Post_Labrador_BC1(request):
+    if request.method == "POST":
+        Site = request.POST['Site']
+        Operator = request.POST['Operator']
+        Panel_No = request.POST['Panel_No']
+        Activity = request.POST['Activity']
+        Bite = request.POST['Bite']
+        Depth = request.POST['Depth']
+        Geo_Type = request.POST['Geo_Type']
+        Tooth_Qty = request.POST['Tooth_Qty']
+        Memo = request.POST['Memo']
+
+        board_labrador_BC1 = Board_Labrador_BC1(Site=Site, Operator=Operator, Panel_No=Panel_No, Activity=Activity,  Bite=Bite, Depth=Depth, Geo_Type=Geo_Type, Tooth_Qty=Tooth_Qty, Memo=Memo)
+        board_labrador_BC1.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'post_labrador_BC1.html')
+
+
+def Site_Labrador_BC1_delete(request, id):
+    board_labrador_BC1 = Board_Labrador_BC1.objects.get(id=id)
+    board_labrador_BC1.delete()
+    return redirect("/Labrador_BC1")
+
+
 
 
 # def Site_N106(request):
@@ -439,5 +469,19 @@ def export_T316_csv(request):
         writer.writerow(board_t316)
 
     response['Content-Disposition'] = 'attachment; filename="CSV_T316.csv"'
+
+    return response
+
+def export_Labrador_BC1_csv(request):
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Site','Time', 'Operator',  'Panel_No', 'Activity', 'Bite', 'Depth', 'Geo_Type','Tooth_Qty','Memo'])
+
+    for board_labrador_BC1 in Board_Labrador_BC1.objects.all().values_list('Site','created_date', 'Operator', 'Panel_No', 'Activity', 'Bite', 'Depth','Geo_Type', 'Tooth_Qty','Memo'):
+        writer.writerow(board_labrador_BC1)
+
+    response['Content-Disposition'] = 'attachment; filename="CSV_Labrador_BC1.csv"'
 
     return response
