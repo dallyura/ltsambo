@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% load static %}
+<div class ="container">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> Labrador BC1 Excavation Report </title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/style.css' %}" >
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>Labrador_BC1 Excavation Report</strong>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<div class="responsive-container">
+
+    <a href="{% url 'export-labrador_BC1-csv' %}" class="btn btn-secondary">Export CSV</a>
+    <a class="btn btn-secondary" href="{% url 'home' %}" role="button">Back</a>
+
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/post_labrador_BC1" role="button">Update</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Site</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Time</th>
+            <th scope="col">Panel_No</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Bite</th>
+            <th scope="col">Depth</th>
+            <th scope="col">Geo type</th>
+            <th scope="col">Tooth Qty</th>
+            <th scope="col">Memo</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for board_labrador_BC1 in boards_labrador_BC1 %}
+        <tr class="text-center">
+            <th scope="row">
+<!--                <span>{{ board_n101.id }}</span>-->
+            </th>
+            <td data-label="Site">
+<!--                    <a href="/N101/{{ board_n101.id }}">-->
+                <span>{{ board_labrador_BC1.Site }}</span>
+                </a>
+            </td>
+
+            <td data-label="Operator">
+                <span>{{ board_labrador_BC1.Operator }}</span>
+            </td>
+
+             <td data-label="Time">
+                <span>{{ board_labrador_BC1.created_date | date:"Y-m-d h:i" }}</span>
+            </td>
+
+            <td data-label="Panel_No">
+                <span>{{ board_labrador_BC1.Panel_No }}</span>
+            </td>
+
+            <td data-label="Activity">
+                <span>{{ board_labrador_BC1.Activity }}</span>
+            </td>
+
+            <td data-label="Bite_No">
+                <span>{{ board_labrador_BC1.Bite }}</span>
+            </td>
+
+            <td data-label="Depth">
+                <span>{{ board_labrador_BC1.Depth }}</span>
+            </td>
+
+            <td data-label="Geo_Type">
+                <span>{{ board_labrador_BC1.Geo_Type }}</span>
+            </td>
+
+            <td data-label="Tooth_Qty">
+                <span>{{ board_labrador_BC1.Tooth_Qty }}</span>
+            </td>
+
+
+            <td data-label="Memo">
+                <span>{{ board_labrador_BC1.Memo }}</span>
+            </td>
+
+            <td>
+<!--                <a href="/edit/{{ board_n101.id }}"><span class="btn btn-success">Edit</span></a>-->
+<!--                    <a href="/delete_N103/{{ board_n103.id }}" class="btn btn-secondary btn-sm"  >Delete</a>    -->
+
+                <a href="#" id="{{board_labrador_BC1.id}}"  data-toggle="modal" data-target="#deleteAlertModal" onclick="clickEvent(id)" class="btn btn-secondary btn-sm">Delete<ion-icon name="trash"></ion-icon></a>
+            </td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+        <p id="hidden_id" style="display: none;"></p>
+    </table>
+    <div id="deleteAlertModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Alert!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <div class="modal-body">
+               <p>Are you sure?</p>
+               <p>진짜로 내용을 삭제하시겠습니까?</p>
+           </div>
+           <div class="modal-footer">
+              <button onclick="deleteExecute()" type="button" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+           </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function deleteExecute() {
+        location.replace("/delete_Labrador_BC1/" + document.getElementById('hidden_id').value);
+    }
+
+    function clickEvent(id) {
+        document.getElementById('hidden_id').value=id;
+    }
+</script>
+
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}">
+
+</script>
+</body>
+</html>
+
+
+
+
+{% else %}
+
+Login first!
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% load static %}
+
+
+<div class="container">
+    <form action="/post_labrador_BC1/" method="post">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="inputTitle" class="col-sm-2 col-form-label"><strong>Site</strong></label>
+            <div class="col-sm-10">
+<!--                <input type="text" name="Site" class="form-control" id="inputTitle">-->
+                <select class="form-select" name="Site" aria-label="Default select example" id="inputTitle">
+                    <option selected>Select Sites</option>
+                    <option value="N101">N101</option>
+                    <option value="N102">N102</option>
+                    <option value="N103">N103</option>
+                    <option value="N106">N106</option>
+                    <option value="N109">N109</option>
+                    <option value="T316">T316</option>
+                    <option value="Labrador_BC1">labrador_BC1</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputAuthor" class="col-sm-2 col-form-label"><strong>Operator</strong></label>
+            <div class="col-sm-10">
+                <input type="text" name="Operator" class="form-control" id="inputAuthor">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Panel_No</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="Panel_No" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+
+
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Activity</strong></label>
+            <div class="col-sm-10">
+<!--                <textarea type="text" name="Activity" class="form-control" id="inputContent"></textarea>-->
+                <select class="form-select" name="Activity" aria-label="Default select example" id="inputContent">
+                    <option selected>Select Activities</option>
+                    <option value="Excavation">Excavation</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Chiselling">Chiselling</option>
+                    <option value="Trimming">Trimming</option>
+                    <option value="Water stopper removal">Water stopper removal</option>
+                    <option value="Desanding">Desanding</option>
+                    <option value="Tooth change">Tooth change</option>
+                    <option value="Repair">Repair</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Standby">Standby</option>
+                    <option value="Meal">Meal</option>
+                    <option value="TBM">TBM</option>
+                    <option value="Others">Others</option>
+                </select>
+
+            </div>
+        </div>
+
+
+
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Bite</strong></label>
+            <div class="col-sm-10">
+<!--            <textarea type="text" name="Bite" class="form-control" id="inputContent"></textarea>-->
+                <select class="form-select" name="Bite" aria-label="Default select example" id="inputContent">
+                    <option selected>Select Bites</option>
+                    <option value="1Bite">1Bite</option>
+                    <option value="2Bite">2Bite</option>
+                    <option value="3Bite">3Bite</option>
+                    <option value="4Bite">4Bite</option>
+                </select>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Depth</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="Depth" class="form-control" placeholder="Don't input M, Just Number(depth) only" id="inputContent"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Geo_Type</strong></label>
+            <div class="col-sm-10">
+<!--                <textarea type="text" name="Geo_Type" class="form-control" id="inputContent"></textarea>-->
+
+                <select class="form-select" name="Geo_Type" aria-label="Default select example" id="inputContent">
+                    <option selected>Geo type</option>
+                    <option value="Soil">Soil</option>
+                    <option value="Marine Clay">Marine Clay</option>
+                    <option value="OA">OA</option>
+                    <option value="Sand">Sand</option>
+                    <option value="Rock(JF)">Rock(JF)</option>
+                    <option value="Rock(BT)">Rock(BT)</option>
+                    <option value="Grouting">Grouting</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Tooth_Qty</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="Tooth_Qty" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <label for="inputContent" class="col-sm-2 col-form-label"><strong>Memo</strong></label>
+            <div class="col-sm-10">
+                <textarea type="text" name="Memo" class="form-control" id="inputContent"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <a class="btn btn-secondary" href="{% url 'Labrador_BC1' %}" role="button">Back</a>
+                <input class="btn btn-primary" type="submit" role="button" value="SAVE">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% else %}
+
+Login first!
+
+{% endif %}
+
+
+{% endblock %}
